@@ -1,0 +1,62 @@
+[
+  {
+    "src": "/images/aries/sample.jpg",
+    "label": "aries",
+    "description": "Energetic, bold fridge with red elements"
+  },
+  {
+    "src": "/images/taurus/sample.jpg", 
+    "label": "taurus",
+    "description": "Sturdy, reliable fridge with earth tones"
+  },
+  {
+    "src": "/images/gemini/sample.jpg",
+    "label": "gemini", 
+    "description": "Dual-tone, versatile fridge design"
+  },
+  {
+    "src": "/images/cancer/sample.jpg",
+    "label": "cancer",
+    "description": "Cozy, protective fridge with soft curves"
+  },
+  {
+    "src": "/images/leo/sample.jpg",
+    "label": "leo",
+    "description": "Bold, luxurious fridge with golden accents"
+  },
+  {
+    "src": "/images/virgo/sample.jpg",
+    "label": "virgo",
+    "description": "Clean, organized fridge with precise lines"
+  },
+  {
+    "src": "/images/libra/sample.jpg",
+    "label": "libra", 
+    "description": "Balanced, elegant fridge design"
+  },
+  {
+    "src": "/images/scorpio/sample.jpg",
+    "label": "scorpio",
+    "description": "Dark, mysterious fridge with intense features"
+  },
+  {
+    "src": "/images/sagittarius/sample.jpg",
+    "label": "sagittarius",
+    "description": "Adventurous, spacious fridge design"
+  },
+  {
+    "src": "/images/capricorn/sample.jpg",
+    "label": "capricorn",
+    "description": "Professional, structured fridge with classic lines"
+  },
+  {
+    "src": "/images/aquarius/sample.jpg",
+    "label": "aquarius",
+    "description": "Innovative, futuristic fridge design"
+  },
+  {
+    "src": "/images/pisces/sample.jpg",
+    "label": "pisces",
+    "description": "Flowing, dreamy fridge with soft features"
+  }
+]
