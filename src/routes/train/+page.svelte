@@ -82,26 +82,42 @@
     if (!classifier) throw new Error('Classifier not initialized');
 
     let count = 0;
+    let skipped = 0;
+    const supportedFormats = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
+    
     for (const sample of dataset) {
       try {
+        // Check file extension
+        const extension = sample.src.toLowerCase().split('.').pop();
+        if (!supportedFormats.includes('.' + extension)) {
+          log(`⚠️ Skipping unsupported format: ${sample.src} (${extension.toUpperCase()})`);
+          skipped++;
+          continue;
+        }
+
         const img = await loadImage(sample.src);
         await new Promise((resolve, reject) => {
           classifier.addImage(img, sample.label, (err) => {
             if (err) return reject(err);
             count += 1;
-            if (count % 5 === 0) {
-              progress = `Added ${count}/${dataset.length} images...`;
+            if (count % 3 === 0) {
+              progress = `Added ${count}/${dataset.length - skipped} valid images...`;
               log(progress);
             }
             resolve();
           });
         });
       } catch (error) {
-        log(`Skipping ${sample.src}: ${error.message}`);
+        log(`❌ Skipping ${sample.src}: ${error.message}`);
+        skipped++;
       }
     }
 
-    log(`Finished adding ${count} images`);
+    log(`✅ Finished adding ${count} images (${skipped} skipped)`);
+    
+    if (count < 3) {
+      throw new Error(`Not enough images to train (${count}). Need at least 3 images total.`);
+    }
   }
 
   async function startTraining() {
@@ -128,7 +144,9 @@
           isTraining = false;
           canSave = true;
         } else {
-          progress = `Training... Loss: ${lossValue.toFixed(4)}`;
+          // Handle different types of loss values
+          const lossDisplay = typeof lossValue === 'number' ? lossValue.toFixed(4) : String(lossValue);
+          progress = `Training... Loss: ${lossDisplay}`;
           log(progress);
         }
       });
@@ -229,7 +247,7 @@
         <li>2. Update /static/dataset.json with your image paths</li>
         <li>3. Click "Train Model" to start training</li>
         <li>4. Once training finishes, click "Save Model" to download the trained model</li>
-        <li>5. Move the downloaded files to /static/models/ for use in the prediction page</li>
+        <li>5. Move the downloaded files to /static/models/fridge-zodiac/ so the loader/results flow can use them</li>
       </ol>
     </div>
   </div>

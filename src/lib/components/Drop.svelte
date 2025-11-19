@@ -1,12 +1,66 @@
 <script>
 	import { goto } from '$app/navigation';
-
 	import DropIcon from '$lib/assets/DropIcon.svelte';
+
+	let fileInput;
+	let dragOver = false;
+
+	function handleClick() {
+		fileInput.click();
+	}
+
+	function handleFileSelect(event) {
+		const file = event.target.files[0];
+		if (file && file.type.startsWith('image/')) {
+			// Store the image file in sessionStorage as a data URL for the loader
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				sessionStorage.setItem('fridgeImage', e.target.result);
+				goto('/loader');
+			};
+			reader.readAsDataURL(file);
+		}
+	}
+
+	function handleDragOver(event) {
+		event.preventDefault();
+		dragOver = true;
+	}
+
+	function handleDragLeave() {
+		dragOver = false;
+	}
+
+	function handleDrop(event) {
+		event.preventDefault();
+		dragOver = false;
+		
+		const files = event.dataTransfer.files;
+		if (files.length > 0 && files[0].type.startsWith('image/')) {
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				sessionStorage.setItem('fridgeImage', e.target.result);
+				goto('/loader');
+			};
+			reader.readAsDataURL(files[0]);
+		}
+	}
 </script>
 
+<input
+	bind:this={fileInput}
+	type="file"
+	accept="image/*"
+	onchange={handleFileSelect}
+	class="hidden"
+/>
+
 <div
-	onclick={() => goto('/loader')}
-	class="relative container flex h-30 w-2/3 items-center justify-center"
+	onclick={handleClick}
+	ondragover={handleDragOver}
+	ondragleave={handleDragLeave}
+	ondrop={handleDrop}
+	class="relative container flex h-30 w-2/3 items-center justify-center cursor-pointer transition-all duration-300 {dragOver ? 'scale-105' : 'scale-100'}"
 >
 	<div class="w-12">
 		<DropIcon />

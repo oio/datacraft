@@ -36,9 +36,39 @@
 		Pisces
 	};
 
-	const signKeys = Object.keys(signs);
-	const sign = signs[signKeys[Math.floor(Math.random() * signKeys.length)]];
-	const SignIcon = signComponents[sign.name];
+	// Get prediction result from sessionStorage
+	let predictionResult = null;
+	let sign = null;
+	let SignIcon = null;
+	let confidence = null;
+	let isMLPrediction = false;
+
+	if (typeof sessionStorage !== 'undefined') {
+		const storedResult = sessionStorage.getItem('predictionResult');
+		if (storedResult) {
+			predictionResult = JSON.parse(storedResult);
+			
+			if (predictionResult.random) {
+				// Use random selection
+				const signKeys = Object.keys(signs);
+				sign = signs[signKeys[Math.floor(Math.random() * signKeys.length)]];
+			} else {
+				// Use ML5 prediction
+				const predictedSign = predictionResult.sign;
+				sign = signs[predictedSign] || signs['leo']; // fallback to leo if sign not found
+				confidence = predictionResult.confidence;
+				isMLPrediction = true;
+			}
+		}
+	}
+	
+	// Fallback if no result found
+	if (!sign) {
+		const signKeys = Object.keys(signs);
+		sign = signs[signKeys[Math.floor(Math.random() * signKeys.length)]];
+	}
+	
+	SignIcon = signComponents[sign.name];
 
 	let isRight = $state(false);
 	let hasClicked = $state(false);
@@ -100,6 +130,11 @@
 						['a', 'e', 'i', 'o', 'u'].includes(sign.name[0].toLowerCase()) ? 'an' : 'a'
 					} ${sign.name.toLowerCase()} fridge 💅`}
 				/>
+				{#if isMLPrediction && confidence}
+					<div class="text-xs text-white opacity-75">
+						AI confidence: {confidence}%
+					</div>
+				{/if}
 				<p class="w-8/12 rounded-3xl bg-ulb px-2 py-2 text-center font-comic text-base text-white">
 					{sign.sentences[Math.floor(Math.random() * sign.sentences.length)]}
 				</p>

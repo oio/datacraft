@@ -37,7 +37,8 @@ src/
 │   └── zodiac.js   # Zodiac sign utilities and data
 ├── routes/         # SvelteKit file-based routing
 │   ├── train/      # ML5 model training page
-│   ├── predict/    # Image classification page
+│   ├── loader/     # ML prediction & loading screen
+│   ├── lezgo/      # Results page after prediction
 │   ├── +layout.svelte   # Root layout component
 │   ├── +page.svelte     # Home page
 │   └── layout.css       # Global TailwindCSS imports
@@ -84,14 +85,14 @@ This application features a unique ML5.js-powered image classifier that predicts
 5. **Deployment**: Place model files in `/static/models/fridge-zodiac/` for prediction use
 
 ### Prediction Workflow
-1. **Model Loading**: Automatically loads trained model from `/static/models/fridge-zodiac/`
-2. **Image Upload**: Drag-and-drop or file select interface
-3. **Classification**: Real-time prediction with confidence scores
-4. **Results**: Displays zodiac sign predictions with personality descriptions
+1. **Image Upload**: User uploads a fridge photo on the home page
+2. **Loader Step**: `/loader` route loads the ML5 model from `/static/models/fridge-zodiac/` and classifies the image
+3. **Results**: `/lezgo` displays the predicted zodiac sign, confidence (when available), and personality copy
 
 ### Key Files
 - `src/routes/train/+page.svelte` - Model training interface
-- `src/routes/predict/+page.svelte` - Image classification interface  
+- `src/routes/loader/+page.svelte` - Model loading & prediction
+- `src/routes/lezgo/+page.svelte` - Result display interface  
 - `src/lib/zodiac.js` - Zodiac sign data and utilities
 - `static/dataset.json` - Training dataset configuration
 - `static/images/` - Training images organized by zodiac sign
