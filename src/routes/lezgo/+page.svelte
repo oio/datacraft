@@ -170,7 +170,7 @@
 					</div>
 				{/if}
 				{#if isRight}
-					<p class="text-center font-comic text-lg font-bold text-ye">fridge don't lie!</p>
+					<p class="text-center font-comic text-lg font-bold text-ye">fridges don't lie!</p>
 				{/if}
 				{#if hasClicked && !isRight && !submitted}
 					<p class="text-center font-comic text-lg font-bold text-ye">what's your real sign?</p>
