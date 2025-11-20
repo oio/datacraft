@@ -38,43 +38,17 @@
 
 	// Get prediction result from sessionStorage
 	let predictionResult = null;
-	let sign = null;
-	let SignIcon = null;
-	let confidence = null;
-	let isMLPrediction = false;
-
-	if (typeof sessionStorage !== 'undefined') {
-		const storedResult = sessionStorage.getItem('predictionResult');
-		if (storedResult) {
-			predictionResult = JSON.parse(storedResult);
-			
-			if (predictionResult.random) {
-				// Use random selection
-				const signKeys = Object.keys(signs);
-				sign = signs[signKeys[Math.floor(Math.random() * signKeys.length)]];
-			} else {
-				// Use ML5 prediction
-				const predictedSign = predictionResult.sign;
-				sign = signs[predictedSign] || signs['leo']; // fallback to leo if sign not found
-				confidence = predictionResult.confidence;
-				isMLPrediction = true;
-			}
-		}
-	}
-	
-	// Fallback if no result found
-	if (!sign) {
-		const signKeys = Object.keys(signs);
-		sign = signs[signKeys[Math.floor(Math.random() * signKeys.length)]];
-	}
-	
-	SignIcon = signComponents[sign.name];
-
+	let confidence = $state(null);
+	let isMLPrediction = $state(false);
+	let uploadedImage = $state(null);
 	let isRight = $state(false);
 	let hasClicked = $state(false);
 	let selectedSign = $state('');
 	let submitted = $state(false);
 	let timeHasPassed = $state(false);
+
+	// Initialize sign immediately for SSR
+	let initialSign = null;
 
 	const allSigns = [
 		'aries',
@@ -97,6 +71,40 @@
 		}
 	}
 
+	if (typeof sessionStorage !== 'undefined') {
+		const storedResult = sessionStorage.getItem('predictionResult');
+		if (storedResult) {
+			predictionResult = JSON.parse(storedResult);
+
+			if (predictionResult.random) {
+				// Use random selection
+				const signKeys = Object.keys(signs);
+				initialSign = signs[signKeys[Math.floor(Math.random() * signKeys.length)]];
+			} else {
+				// Use ML5 prediction
+				const predictedSign = predictionResult.sign;
+				initialSign = signs[predictedSign] || signs['leo']; // fallback to leo if sign not found
+				confidence = predictionResult.confidence;
+				isMLPrediction = true;
+			}
+		}
+
+		// Get uploaded image from sessionStorage
+		const storedImage = sessionStorage.getItem('fridgeImage');
+		if (storedImage) {
+			uploadedImage = storedImage;
+		}
+	}
+
+	// Fallback if no result found - initialize immediately for SSR
+	if (!initialSign) {
+		const signKeys = Object.keys(signs);
+		initialSign = signs[signKeys[Math.floor(Math.random() * signKeys.length)]];
+	}
+
+	const sign = initialSign;
+	const SignIcon = signComponents[sign.name];
+
 	setTimeout(() => {
 		timeHasPassed = true;
 	}, 2000);
@@ -112,30 +120,40 @@
 	<div
 		class="relative z-10 mx-auto flex h-screen w-2xl flex-col items-center justify-start gap-6 pt-12"
 	>
-		<div class="flex w-96 items-center justify-center">
-			<img src={title} alt="Title" class="w-full" />
-		</div>
+		<a href="/">
+			<div class="flex w-96 items-center justify-center">
+				<img src={title} alt="Title" class="w-full" />
+			</div>
+		</a>
 
-		<div class="relative h-96 w-7/12 pt-8">
-			<img src={fridgy} alt="Fridgy" class="absolute z-0 h-full w-full rounded-3xl object-cover" />
+		<div class="relative h-112 w-7/12 pt-5">
+			<img
+				src={uploadedImage || fridgy}
+				alt="Fridgy"
+				class="absolute z-0 h-full w-full rounded-3xl object-cover"
+			/>
 			<div class="relative z-10 flex flex-col items-center justify-center gap-4 pt-9">
 				<div class="flex h-24 w-24 items-center justify-center rounded-full bg-ulb">
 					<div class="w-12">
 						<SignIcon />
 					</div>
 				</div>
-				<Pill
-					isBlue
-					text={`such ${
-						['a', 'e', 'i', 'o', 'u'].includes(sign.name[0].toLowerCase()) ? 'an' : 'a'
-					} ${sign.name.toLowerCase()} fridge 💅`}
-				/>
-				{#if isMLPrediction && confidence}
-					<div class="text-xs text-white opacity-75">
-						AI confidence: {confidence}%
-					</div>
-				{/if}
-				<p class="w-8/12 rounded-3xl bg-ulb px-2 py-2 text-center font-comic text-base text-white">
+				<div class="flex flex-col items-center justify-center">
+					<Pill
+						isBlue
+						text={`such ${
+							['a', 'e', 'i', 'o', 'u'].includes(sign.name[0].toLowerCase()) ? 'an' : 'a'
+						} ${sign.name.toLowerCase()} fridge 💅`}
+					/>
+					{#if isMLPrediction && confidence}
+						<div class="rounded-full bg-ulb px-2 py-1">
+							<p class="font-comic text-xs text-white">
+								AI confidence: {confidence}%
+							</p>
+						</div>
+					{/if}
+				</div>
+				<p class="w-8/12 rounded-3xl bg-ulb px-4 py-3 text-center font-comic text-base text-white">
 					{sign.sentences[Math.floor(Math.random() * sign.sentences.length)]}
 				</p>
 			</div>
@@ -143,7 +161,7 @@
 
 		{#if timeHasPassed}
 			<div
-				class="flex flex-col items-center justify-center gap-4 pt-8"
+				class="flex flex-col items-center justify-center gap-4 pt-5"
 				transition:fly={{ y: -100, duration: 1000 }}
 			>
 				{#if !hasClicked}

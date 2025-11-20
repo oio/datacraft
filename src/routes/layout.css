@@ -6,3 +6,8 @@
 	--color-ye: #ffdd31;
 	--color-ulb: #24103c;
 }
+
+::selection {
+	background-color: var(--color-ye);
+	color: var(--color-ulb);
+}

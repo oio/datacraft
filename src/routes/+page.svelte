@@ -23,10 +23,20 @@
 			/>
 			<img src={ballImg} alt="Ball" class="relative z-0 w-2/3" />
 		</div>
-		<p class="w-2/3 text-center font-comic text-white">
-			wef aegrg raeg r wef aegrg raeg r wef aegrg raeg r wef aegrg raeg r wef aegrg raeg r wef aegrg
-			raeg r wef aegrg raeg r wef aegrg raeg r wef aegrg raeg r wef aegrg raeg r
-		</p>
+		<div class="w-2/3`">
+			<p class=" text-center font-comic text-lg font-bold text-white">
+				We ran out of myths so we started making up new ones.
+			</p>
+			<p class=" text-center font-comic text-lg font-bold text-white">
+				Gen Z, Gen Alpha, Scorpios, Millennials.
+			</p>
+			<p class=" text-center font-comic text-lg font-bold text-white">
+				Astrology for people who work in spreadsheets.
+			</p>
+			<p class=" text-center font-comic text-lg font-bold text-white">
+				Congratulations, you're now a condiment.
+			</p>
+		</div>
 
 		<Drop />
 	</div>
