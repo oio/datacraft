@@ -1,92 +1,92 @@
 [
   {
-    "src": "/images/cancer/inbound5763342494890429633%20-%20Will%20Sturdy.jpg",
+    "src": "/images/cancer/fridge_02.jpg",
     "label": "cancer",
-    "filename": "inbound5763342494890429633 - Will Sturdy.jpg"
+    "filename": "fridge_02.jpg"
   },
   {
-    "src": "/images/cancer/IMG_4202%20-%20Vidya%20Bhargava.jpeg",
+    "src": "/images/cancer/fridge_01.jpeg",
     "label": "cancer",
-    "filename": "IMG_4202 - Vidya Bhargava.jpeg"
+    "filename": "fridge_01.jpeg"
   },
   {
-    "src": "/images/gemini/image%20-%20Alan%20David%20Herna%CC%81ndez%20Trujillo.jpg",
+    "src": "/images/gemini/fridge_01.jpg",
     "label": "gemini",
-    "filename": "image - Alan David Hernández Trujillo.jpg"
+    "filename": "fridge_01.jpg"
   },
   {
-    "src": "/images/leo/WhatsApp%20Image%202025-11-19%20at%2010.42.39%20-%20Vineeth%20Vajipey.jpeg",
+    "src": "/images/leo/fridge_02.jpeg",
     "label": "leo",
-    "filename": "WhatsApp Image 2025-11-19 at 10.42.39 - Vineeth Vajipey.jpeg"
+    "filename": "fridge_02.jpeg"
   },
   {
-    "src": "/images/leo/WhatsApp%20Image%202025-11-11%20at%2022.14.47%20-%20Joana%20Gispert.jpeg",
+    "src": "/images/leo/fridge_01.jpeg",
     "label": "leo",
-    "filename": "WhatsApp Image 2025-11-11 at 22.14.47 - Joana Gispert.jpeg"
+    "filename": "fridge_01.jpeg"
   },
   {
-    "src": "/images/libra/image%20-%20Dries%20De%20Roeck.jpg",
+    "src": "/images/libra/fridge_01.jpg",
     "label": "libra",
-    "filename": "image - Dries De Roeck.jpg"
+    "filename": "fridge_01.jpg"
   },
   {
-    "src": "/images/libra/inbound8618652216330975143%20-%20Sofia%20Buti.jpg",
+    "src": "/images/libra/fridge_02.jpg",
     "label": "libra",
-    "filename": "inbound8618652216330975143 - Sofia Buti.jpg"
+    "filename": "fridge_02.jpg"
   },
   {
-    "src": "/images/pisces/IMG_2668%20-%20Marijana%20Jankovic%20%28Mara%29.jpeg",
+    "src": "/images/pisces/fridge_01.jpeg",
     "label": "pisces",
-    "filename": "IMG_2668 - Marijana Jankovic (Mara).jpeg"
+    "filename": "fridge_01.jpeg"
   },
   {
-    "src": "/images/sagittarius/image%20-%20Giovanna%20Crise.jpg",
+    "src": "/images/sagittarius/fridge_01.jpg",
     "label": "sagittarius",
-    "filename": "image - Giovanna Crise.jpg"
+    "filename": "fridge_01.jpg"
   },
   {
-    "src": "/images/sagittarius/IMG_9044%20-%20Rahi%20Shah.jpeg",
+    "src": "/images/sagittarius/fridge_02.jpeg",
     "label": "sagittarius",
-    "filename": "IMG_9044 - Rahi Shah.jpeg"
+    "filename": "fridge_02.jpeg"
   },
   {
-    "src": "/images/scorpio/Ruben%20Gres.jpg",
+    "src": "/images/scorpio/fridge_02.jpg",
     "label": "scorpio",
-    "filename": "Ruben Gres.jpg"
+    "filename": "fridge_02.jpg"
   },
   {
-    "src": "/images/scorpio/Tanishq%20Khandelwal.jpeg",
+    "src": "/images/scorpio/fridge_03.jpeg",
     "label": "scorpio",
-    "filename": "Tanishq Khandelwal.jpeg"
+    "filename": "fridge_03.jpeg"
   },
   {
-    "src": "/images/scorpio/%20Kenwyn%20Hoefnagel.jpg",
+    "src": "/images/scorpio/fridge_01.jpg",
     "label": "scorpio",
-    "filename": " Kenwyn Hoefnagel.jpg"
+    "filename": "fridge_01.jpg"
   },
   {
-    "src": "/images/taurus/IMG_7166%20-%20Joa%CC%83o%20Miranda.JPG",
+    "src": "/images/taurus/fridge_01.jpg",
     "label": "taurus",
-    "filename": "IMG_7166 - João Miranda.JPG"
+    "filename": "fridge_01.jpg"
   },
   {
-    "src": "/images/virgo/IMG_2531%20-%20monica%20albergoni.jpeg",
+    "src": "/images/virgo/fridge_01.jpeg",
     "label": "virgo",
-    "filename": "IMG_2531 - monica albergoni.jpeg"
+    "filename": "fridge_01.jpeg"
   },
   {
-    "src": "/images/virgo/IMG_7818%20-%20Loredana%20B.jpeg",
+    "src": "/images/virgo/fridge_02.jpeg",
     "label": "virgo",
-    "filename": "IMG_7818 - Loredana B.jpeg"
+    "filename": "fridge_02.jpeg"
   },
   {
-    "src": "/images/gemini/IMG_9771%20-%20Le%CC%81ane.jpg",
+    "src": "/images/gemini/fridge_02.jpg",
     "label": "gemini",
-    "filename": "IMG_9771 - Léane.jpg"
+    "filename": "fridge_02.jpg"
   },
   {
-    "src": "/images/taurus/IMG_7461%20-%20Marko%20Radenkovic%CC%81.jpg",
+    "src": "/images/taurus/fridge_02.jpg",
     "label": "taurus",
-    "filename": "IMG_7461 - Marko Radenković.jpg"
+    "filename": "fridge_02.jpg"
   }
 ]
