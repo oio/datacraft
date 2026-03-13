@@ -1,4 +1,4 @@
-# Fridge Zodiac
+# Cosmic Cooler
 
 Upload a photo of your fridge and an AI will tell you what zodiac sign it is. Built as a tongue-in-cheek astrology app — "astrology for people who work in spreadsheets."
 
@@ -12,10 +12,10 @@ If no trained model is available, it falls back to random cosmic intuition.
 
 ## Tech Stack
 
-- **SvelteKit** (Svelte 5 with runes)
-- **TailwindCSS 4**
-- **ML5.js 0.5.0** — transfer learning with MobileNet FeatureExtractor
-- **Vite**
+-   **SvelteKit** (Svelte 5 with runes)
+-   **TailwindCSS 4**
+-   **ML5.js 0.5.0** — transfer learning with MobileNet FeatureExtractor
+-   **Vite**
 
 ## Getting Started
 
@@ -28,13 +28,13 @@ Open [http://localhost:5173](http://localhost:5173).
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start dev server |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint + Prettier checks |
-| `npm run format` | Auto-format with Prettier |
+| Command           | Description                  |
+| ----------------- | ---------------------------- |
+| `npm run dev`     | Start dev server             |
+| `npm run build`   | Production build             |
+| `npm run preview` | Preview production build     |
+| `npm run lint`    | Run ESLint + Prettier checks |
+| `npm run format`  | Auto-format with Prettier    |
 
 ## Training Your Own Model
 
